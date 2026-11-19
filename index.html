@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+<title>Órdenes de combustible</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f3f7;
+  margin: 0;
+  padding: 18px;
+  color: #243247;
+}
+h2 { color: #173b65; }
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+input, select, button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 6px;
+  font-size: 16px;
+  border-radius: 7px;
+}
+input, select {
+  border: 1px solid #b8c3cf;
+  background: white;
+}
+button {
+  border: none;
+  background: #1765ae;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.verde { background: #16834a; }
+.gris { background: #526579; }
+.tarjeta {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  box-shadow: 0 1px 4px #0001;
+}
+#resultado, .detalle {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+.detalle { font-size: 14px; }
+.aviso {
+  font-size: 13px;
+  color: #526579;
+}
+</style>
+</head>
+
+<body>
+
+<h2>⛽ Órdenes de combustible</h2>
+
+<div class="tarjeta">
+<h3>Nueva orden</h3>
+
+<label>Estación de servicio</label>
+<input id="estacion"
+placeholder="Nombre de la estación">
+
+<label>Chofer</label>
+<input id="chofer"
+placeholder="Nombre y apellido">
+
+<label>Patente</label>
+<input id="patente"
+placeholder="AB123CD">
+
+<label>Combustible</label>
+<select id="combustible">
+<option>Gasoil común</option>
+<option>Gasoil premium</option>
+<option>Nafta súper</option>
+<option>Nafta premium</option>
+</select>
+
+<label>Litros autorizados</label>
+<input id="litros" type="number"
+min="0.01" step="0.01"
+placeholder="Ejemplo: 150">
+
+<button id="generar">Generar orden</button>
+</div>
+
+<div class="tarjeta" id="comprobante" hidden>
+<h3>Comprobante generado</h3>
+<div id="resultado"></div>
+
+<button class="verde" id="compartir">
+Compartir orden
+</button>
+
+<button class="gris" id="abrirWhatsapp">
+Enviar por WhatsApp
+</button>
+
+<button class="gris" id="copiar">
+Copiar texto de la orden
+</button>
+</div>
+
+<div class="tarjeta">
+<h3>Órdenes guardadas</h3>
+<div id="historial"></div>
+</div>
+
+<script>
+"use strict";
+
+const CLAVE = "ordenesCombustible";
+let ordenActual = "";
+
+function obtenerOrdenes() {
+  try {
+    const datos = localStorage.getItem(CLAVE);
+    const ordenes = datos ? JSON.parse(datos) : [];
+    return Array.isArray(ordenes) ? ordenes : [];
+  } catch (error) {
+    alert("No se pudo leer el historial.");
+    return [];
+  }
+}
+
+function guardarOrdenes(ordenes) {
+  try {
+    localStorage.setItem(
+      CLAVE,
+      JSON.stringify(ordenes)
+    );
+    return true;
+  } catch (error) {
+    alert("No se pudo guardar la orden.");
+    return false;
+  }
+}
+
+function generarOrden() {
+  const estacion =
+    document.getElementById("estacion").value.trim();
+
+  const chofer =
+    document.getElementById("chofer").value.trim();
+
+  const patente =
+    document.getElementById("patente")
+      .value.trim().toUpperCase();
+
+  const combustible =
+    document.getElementById("combustible").value;
+
+  const litros =
+    document.getElementById("litros").value.trim();
+
+  const cantidad = Number(litros);
+
+  if (!estacion || !chofer || !patente ||
+      !litros || !Number.isFinite(cantidad) ||
+      cantidad <= 0) {
+    alert("Completá correctamente todos los campos.");
+    return;
+  }
+
+  const numero = Date.now().toString();
+  const fecha = new Date().toLocaleString("es-AR");
+
+  const texto =
+    "ORDEN DE COMBUSTIBLE\n" +
+    "N.º: " + numero + "\n" +
+    "Fecha: " + fecha + "\n" +
+    "Estación: " + estacion + "\n" +
+    "Chofer: " + chofer + "\n" +
+    "Patente: " + patente + "\n" +
+    "Combustible: " + combustible + "\n" +
+    "Litros autorizados: " + cantidad;
+
+  const ordenes = obtenerOrdenes();
+
+  ordenes.push({
+    numero: numero,
+    fecha: fecha,
+    chofer: chofer,
+    patente: patente,
+    texto: texto
+  });
+
+  if (!guardarOrdenes(ordenes)) return;
+
+  mostrarComprobante(texto);
+  mostrarHistorial();
+
+  alert("Orden generada y guardada.");
+}
+
+function mostrarComprobante(texto) {
+  ordenActual = texto;
+
+  document.getElementById("resultado")
+    .textContent = texto;
+
+  document.getElementById("comprobante")
+    .hidden = false;
+}
+
+async function compartirOrden() {
+  if (!ordenActual) {
+    alert("Primero generá una orden.");
+    return;
+  }
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "Orden de combustible",
+        text: ordenActual
+      });
+      return;
+    } catch (error) {
+      if (error.name === "AbortError") return;
+    }
+  }
+
+  abrirWhatsapp();
+}
+
+function abrirWhatsapp() {
+  if (!ordenActual) {
+    alert("Primero generá una orden.");
+    return;
+  }
+
+  const enlace =
+    "https://api.whatsapp.com/send?text=" +
+    encodeURIComponent(ordenActual);
+
+  window.location.href = enlace;
+}
+
+async function copiarOrden() {
+  if (!ordenActual) {
+    alert("Primero generá una orden.");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(ordenActual);
+    alert("Orden copiada. Pegala en WhatsApp.");
+  } catch (error) {
+    const campo = document.createElement("textarea");
+    campo.value = ordenActual;
+    campo.style.position = "fixed";
+    campo.style.opacity = "0";
+    document.body.appendChild(campo);
+    campo.focus();
+    campo.select();
+
+    const copiado = document.execCommand("copy");
+    campo.remove();
+
+    alert(copiado ?
+      "Orden copiada." :
+      "No se pudo copiar automáticamente.");
+  }
+}
+
+function mostrarHistorial() {
+  const ordenes = obtenerOrdenes();
+  const historial =
+    document.getElementById("historial");
+
+  historial.replaceChildren();
+
+  if (ordenes.length === 0) {
+    historial.textContent =
+      "Todavía no hay órdenes guardadas.";
+    return;
+  }
+
+  ordenes.slice().reverse().forEach(function(orden) {
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "tarjeta";
+
+    const detalle = document.createElement("div");
+    detalle.className = "detalle";
+
+    detalle.textContent =
+      "N.º " + orden.numero + "\n" +
+      orden.fecha + " | " +
+      orden.chofer + " | " + orden.patente;
+
+    const boton = document.createElement("button");
+    boton.className = "gris";
+    boton.textContent = "Ver orden";
+
+    boton.addEventListener("click", function() {
+      mostrarComprobante(orden.texto);
+
+      document.getElementById("comprobante")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+    });
+
+    tarjeta.appendChild(detalle);
+    tarjeta.appendChild(boton);
+    historial.appendChild(tarjeta);
+  });
+}
+
+document.getElementById("generar")
+  .addEventListener("click", generarOrden);
+
+document.getElementById("compartir")
+  .addEventListener("click", compartirOrden);
+
+document.getElementById("abrirWhatsapp")
+  .addEventListener("click", abrirWhatsapp);
+
+document.getElementById("copiar")
+  .addEventListener("click", copiarOrden);
+
+mostrarHistorial();
+</script>
+
+</body>
+</html>
