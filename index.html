@@ -1,123 +1,110 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CCWE | Órdenes de combustible</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<style>
-* { box-sizing: border-box; }
-
-body {
-  font-family: Arial, sans-serif;
-  background: #f0f3f7;
-  color: #243247;
-  margin: 0;
-  padding: 16px;
-}
-
-h1 { font-size: 23px; color: #173b65; margin: 0; }
-h2 { font-size: 19px; color: #173b65; }
-h3 { margin-top: 0; }
-
-.encabezado {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 10px 0 22px;
-}
-
-.logo {
-  border: 3px solid #173b65;
-  color: #173b65;
-  font-weight: 900;
-  font-size: 21px;
-  padding: 12px 7px;
-  letter-spacing: -1px;
-}
-
-.subtitulo {
-  font-size: 12px;
-  color: #526579;
-  margin-top: 5px;
-}
-
-.tarjeta {
-  background: white;
-  padding: 17px;
-  border-radius: 10px;
-  margin: 15px 0;
-  box-shadow: 0 1px 5px #0001;
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-input, select, button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 7px;
-  border-radius: 7px;
-  font-size: 16px;
-}
-
-input, select {
-  border: 1px solid #b8c3cf;
-  background: white;
-}
-
-button {
-  border: 0;
-  background: #1765ae;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.verde { background: #16834a; }
-.gris { background: #526579; }
-
-#resultado {
-  white-space: pre-line;
-  line-height: 1.8;
-  overflow-wrap: anywhere;
-}
-
-.detalle {
-  font-size: 14px;
-  white-space: pre-line;
-  line-height: 1.6;
-}
-
-.aviso {
-  font-size: 12px;
-  color: #526579;
-  line-height: 1.5;
-}
-</style>
-</head>
-
-<body>
-
-<div class="encabezado">
-  <div class="logo">CCWE</div>
-  <div>
-    <h1>Órdenes de combustible</h1>
-    <div class="subtitulo">
-      Sistema de autorización de cargas
-    </div>
-  </div>
-</div>
-
-<div class="tarjeta">
-<h3>Nueva orden</h3>
-
-<label>Estación de servicio</label>
+<!DOCTYPE html>  <html lang="es">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title>CCWE | Órdenes de combustible</title>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>  <style>  
+* { box-sizing: border-box; }  
+  
+body {  
+  font-family: Arial, sans-serif;  
+  background: #f0f3f7;  
+  color: #243247;  
+  margin: 0;  
+  padding: 16px;  
+}  
+  
+h1 { font-size: 23px; color: #173b65; margin: 0; }  
+h2 { font-size: 19px; color: #173b65; }  
+h3 { margin-top: 0; }  
+  
+.encabezado {  
+  display: flex;  
+  align-items: center;  
+  gap: 14px;  
+  margin: 10px 0 22px;  
+}  
+  
+.logo {  
+  border: 3px solid #173b65;  
+  color: #173b65;  
+  font-weight: 900;  
+  font-size: 21px;  
+  padding: 12px 7px;  
+  letter-spacing: -1px;  
+}  
+  
+.subtitulo {  
+  font-size: 12px;  
+  color: #526579;  
+  margin-top: 5px;  
+}  
+  
+.tarjeta {  
+  background: white;  
+  padding: 17px;  
+  border-radius: 10px;  
+  margin: 15px 0;  
+  box-shadow: 0 1px 5px #0001;  
+}  
+  
+label {  
+  display: block;  
+  margin-top: 15px;  
+  font-weight: bold;  
+}  
+  
+input, select, button {  
+  width: 100%;  
+  padding: 12px;  
+  margin-top: 7px;  
+  border-radius: 7px;  
+  font-size: 16px;  
+}  
+  
+input, select {  
+  border: 1px solid #b8c3cf;  
+  background: white;  
+}  
+  
+button {  
+  border: 0;  
+  background: #1765ae;  
+  color: white;  
+  font-weight: bold;  
+  cursor: pointer;  
+}  
+  
+.verde { background: #16834a; }  
+.gris { background: #526579; }  
+  
+#resultado {  
+  white-space: pre-line;  
+  line-height: 1.8;  
+  overflow-wrap: anywhere;  
+}  
+  
+.detalle {  
+  font-size: 14px;  
+  white-space: pre-line;  
+  line-height: 1.6;  
+}  
+  
+.aviso {  
+  font-size: 12px;  
+  color: #526579;  
+  line-height: 1.5;  
+}  
+</style>  </head>  <body>  <div class="encabezado">  
+  <div class="logo">CCWE</div>  
+  <div>  
+    <h1>Órdenes de combustible</h1>  
+    <div class="subtitulo">  
+      Sistema de autorización de cargas  
+    </div>  
+  </div>  
+</div>  <div class="tarjeta">  
+<h3>Nueva orden</h3>  <label>Estación de servicio</label>
 <input id="estacion" placeholder="Nombre de la estación">
 
 <label>Propietario del camión</label>
@@ -131,438 +118,421 @@ button {
 
 <label>Combustible</label>
 <select id="combustible">
-  <option>Gasoil común</option>
-  <option>Gasoil premium</option>
-  <option>Nafta súper</option>
-  <option>Nafta premium</option>
-</select>
 
-<label>Litros autorizados</label>
+  <option>Gasoil común</option>  
+  <option>Gasoil premium</option>  
+  <option>Nafta súper</option>  
+  <option>Nafta premium</option>  
+</select>  <label>Litros autorizados</label>
 <input id="litros" type="number" min="0.01" step="0.01" placeholder="Ejemplo: 150">
 
 <button id="generar">Generar orden</button>
-</div>
 
-<div class="tarjeta" id="comprobante" hidden>
-<h3>Orden generada</h3>
-<div id="resultado"></div>
-
-<button class="verde" id="descargar">
-  Descargar PDF
-</button>
-
-<button id="compartir">
-  Compartir PDF
-</button>
-
-<button class="gris" id="abrirWhatsapp">
-  Enviar texto por WhatsApp
-</button>
-
-<button class="gris" id="copiar">
-  Copiar texto
-</button>
-</div>
-
-<div class="tarjeta">
-<h3>Órdenes guardadas</h3>
-<div id="historial"></div>
-</div>
-
-<p class="aviso">
-CCWE · Los registros se guardan en este navegador.
-Todavía no existe un sistema centralizado de validación.
-</p>
-
-<script>
-"use strict";
-
-const CLAVE = "ordenesCombustible";
-let ordenActual = null;
-
-function elemento(id) {
-  return document.getElementById(id);
-}
-
-function obtenerOrdenes() {
-  try {
-    const datos = JSON.parse(
-      localStorage.getItem(CLAVE) || "[]"
-    );
-    return Array.isArray(datos) ? datos : [];
-  } catch (e) {
-    alert("No se pudo leer el historial.");
-    return [];
-  }
-}
-
-function guardarOrdenes(ordenes) {
-  try {
-    localStorage.setItem(
-      CLAVE,
-      JSON.stringify(ordenes)
-    );
-    return true;
-  } catch (e) {
-    alert("No se pudo guardar la orden.");
-    return false;
-  }
-}
-
-function textoOrden(o) {
-  if (o.texto && !o.estacion) return o.texto;
-
-  return "ORDEN DE COMBUSTIBLE CCWE\n" +
-    "N.º: " + o.numero + "\n" +
-    "Fecha: " + o.fecha + "\n" +
-    "Estación: " + o.estacion + "\n" +
-    "Propietario del camión: " + (o.propietario || "-") + "\n" +
-    "Chofer: " + o.chofer + "\n" +
-    "Patente: " + o.patente + "\n" +
-    "Combustible: " + o.combustible + "\n" +
-    "Litros autorizados: " + o.litros;
-}
-
-function generarOrden() {
-  const estacion = elemento("estacion").value.trim();
-  const propietario = elemento("propietario").value.trim();
-  const chofer = elemento("chofer").value.trim();
-  const patente = elemento("patente").value.trim().toUpperCase();
-  const combustible = elemento("combustible").value;
-  const litros = Number(elemento("litros").value);
-
-  if (!estacion || !propietario || !chofer ||
-      !patente || !Number.isFinite(litros) ||
-      litros <= 0) {
-    alert("Completá correctamente todos los campos.");
-    return;
-  }
-
-  const orden = {
-    numero: Date.now().toString(),
-    fecha: new Date().toLocaleString("es-AR"),
-    estacion,
-    propietario,
-    chofer,
-    patente,
-    combustible,
-    litros
-  };
-
-  orden.texto = textoOrden(orden);
-
-  const ordenes = obtenerOrdenes();
-  ordenes.push(orden);
-
-  if (!guardarOrdenes(ordenes)) return;
-
-  mostrarComprobante(orden);
-  mostrarHistorial();
-
-  alert("Orden generada y guardada.");
-}
-
-function mostrarComprobante(o) {
-  ordenActual = o;
-  elemento("resultado").textContent = textoOrden(o);
-  elemento("comprobante").hidden = false;
-}
-
-function normalizarOrden(o) {
-  if (o.estacion) return o;
-
-  const t = o.texto || "";
-
-  function extraer(nombre) {
-    const linea = t.split("\n").find(
-      x => x.startsWith(nombre + ":")
-    );
-    return linea ?
-      linea.slice(nombre.length + 1).trim() : "";
-  }
-
-  return {
-    numero: o.numero || extraer("N.º"),
-    fecha: o.fecha || extraer("Fecha"),
-    estacion: extraer("Estación"),
-    propietario: extraer("Propietario del camión"),
-    chofer: o.chofer || extraer("Chofer"),
-    patente: o.patente || extraer("Patente"),
-    combustible: extraer("Combustible"),
-    litros: extraer("Litros autorizados"),
-    texto: t
-  };
-}
-
-function crearPDF(o) {
-  if (!window.jspdf) {
-    throw new Error(
-      "No se cargó la biblioteca PDF. Comprobá tu conexión a Internet."
-    );
-  }
-
-  const { jsPDF } = window.jspdf;
-
-  const pdf = new jsPDF({
-    orientation: "landscape",
-    unit: "mm",
-    format: "a5"
-  });
-
-  const azul = [23, 59, 101];
-  const gris = [75, 85, 99];
-
-  pdf.setDrawColor(...azul);
-  pdf.setLineWidth(0.6);
-  pdf.rect(8, 8, 194, 132);
-
-  // Logotipo CCWE
-  pdf.setFillColor(...azul);
-  pdf.roundedRect(15, 15, 39, 22, 2, 2, "F");
-
-  pdf.setFont("helvetica", "bold");
-  pdf.setFontSize(19);
-  pdf.setTextColor(255, 255, 255);
-  pdf.text("CCWE", 34.5, 29, { align: "center" });
-
-  pdf.setTextColor(...azul);
-  pdf.setFontSize(15);
-  pdf.text("ORDEN DE CARGA", 61, 23);
-
-  pdf.setFontSize(9);
-  pdf.setFont("helvetica", "normal");
-  pdf.text("AUTORIZACIÓN DE COMBUSTIBLE", 61, 30);
-
-  pdf.setDrawColor(190, 198, 207);
-  pdf.line(15, 43, 195, 43);
-
-  function campo(etiqueta, valor, x, y, ancho) {
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(8);
-    pdf.setTextColor(...gris);
-    pdf.text(etiqueta, x, y);
-
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(10);
-    pdf.setTextColor(25, 35, 50);
-
-    const lineas = pdf.splitTextToSize(
-      String(valor || "-"), ancho
-    );
-
-    pdf.text(lineas.slice(0, 2), x, y + 6);
-  }
-
-  campo("NÚMERO DE ORDEN", o.numero, 15, 51, 90);
-  campo("FECHA DE EMISIÓN", o.fecha, 115, 51, 80);
-
-  campo("ESTACIÓN DE SERVICIO", o.estacion, 15, 67, 85);
-  campo("PROPIETARIO DEL CAMIÓN", o.propietario, 115, 67, 80);
-
-  campo("CHOFER AUTORIZADO", o.chofer, 15, 83, 85);
-  campo("DOMINIO / PATENTE", o.patente, 115, 83, 80);
-
-  campo("TIPO DE COMBUSTIBLE", o.combustible, 15, 99, 85);
-
-  pdf.setFillColor(237, 242, 247);
-  pdf.roundedRect(115, 95, 80, 23, 2, 2, "F");
-
-  pdf.setTextColor(...azul);
-  pdf.setFont("helvetica", "bold");
-  pdf.setFontSize(9);
-  pdf.text("LITROS AUTORIZADOS", 120, 103);
-
-  pdf.setFontSize(16);
-  pdf.text(String(o.litros) + " L", 120, 113);
-
-  pdf.setDrawColor(110, 120, 130);
-  pdf.line(15, 121, 95, 121);
-
-  pdf.setFont("helvetica", "normal");
-  pdf.setFontSize(8);
-  pdf.setTextColor(...gris);
-  pdf.text("Firma / conformidad", 55, 126, {
-    align: "center"
-  });
-
-  pdf.setDrawColor(190, 198, 207);
-  pdf.line(15, 130, 195, 130);
-
-  pdf.setFontSize(7);
-  pdf.text(
-    "CCWE - Documento de autorización de carga",
-    15, 135
-  );
-
-  pdf.text(
-    "Orden N.º " + o.numero,
-    195, 135,
-    { align: "right" }
-  );
-
-  return pdf;
-}
-
-function obtenerPDF() {
-  if (!ordenActual) {
-    alert("Primero generá o seleccioná una orden.");
-    return null;
-  }
-
-  try {
-    return crearPDF(normalizarOrden(ordenActual));
-  } catch (e) {
-    alert(e.message);
-    return null;
-  }
-}
-
-function descargarPDF() {
-  const pdf = obtenerPDF();
-  if (pdf) {
-    pdf.save(
-      "CCWE_Orden_" + ordenActual.numero + ".pdf"
-    );
-  }
-}
-
-async function compartirPDF() {
-  const pdf = obtenerPDF();
-  if (!pdf) return;
-
-  const archivo = new File(
-    [pdf.output("blob")],
-    "CCWE_Orden_" + ordenActual.numero + ".pdf",
-    { type: "application/pdf" }
-  );
-
-  try {
-    if (
-      navigator.canShare &&
-      navigator.canShare({ files: [archivo] }) &&
-      navigator.share
-    ) {
-      await navigator.share({
-        title: "Orden de combustible CCWE",
-        files: [archivo]
-      });
-    } else {
-      pdf.save(archivo.name);
-      alert(
-        "Se descargó el PDF. Podés enviarlo desde WhatsApp como documento."
-      );
-    }
-  } catch (e) {
-    if (e.name !== "AbortError") {
-      alert(
-        "No se pudo compartir. Probá descargar el PDF."
-      );
-    }
-  }
-}
-
-function abrirWhatsapp() {
-  if (!ordenActual) {
-    alert("Primero generá una orden.");
-    return;
-  }
-
-  const enlace =
-    "https://api.whatsapp.com/send?text=" +
-    encodeURIComponent(textoOrden(ordenActual));
-
-  window.location.href = enlace;
-}
-
-async function copiarOrden() {
-  if (!ordenActual) {
-    alert("Primero generá una orden.");
-    return;
-  }
-
-  const texto = textoOrden(ordenActual);
-
-  try {
-    await navigator.clipboard.writeText(texto);
-    alert("Orden copiada.");
-  } catch (e) {
-    const campo = document.createElement("textarea");
-    campo.value = texto;
-    campo.style.position = "fixed";
-    campo.style.opacity = "0";
-
-    document.body.appendChild(campo);
-    campo.focus();
-    campo.select();
-
-    const ok = document.execCommand("copy");
-    campo.remove();
-
-    alert(
-      ok ? "Orden copiada." : "No se pudo copiar."
-    );
-  }
-}
-
-function mostrarHistorial() {
-  const historial = elemento("historial");
-  historial.replaceChildren();
-
-  const ordenes = obtenerOrdenes();
-
-  if (!ordenes.length) {
-    historial.textContent =
-      "Todavía no hay órdenes guardadas.";
-    return;
-  }
-
-  ordenes.slice().reverse().forEach(o => {
-    const tarjeta = document.createElement("div");
-    tarjeta.className = "tarjeta";
-
-    const detalle = document.createElement("div");
-    detalle.className = "detalle";
-
-    detalle.textContent =
-      "N.º " + o.numero + "\n" +
-      o.fecha + "\n" +
-      "Propietario: " + (o.propietario || "-") + "\n" +
-      "Chofer: " + o.chofer + "\n" +
-      "Patente: " + o.patente;
-
-    const boton = document.createElement("button");
-    boton.className = "gris";
-    boton.textContent = "Ver orden";
-
-    boton.addEventListener("click", () => {
-      mostrarComprobante(o);
-      elemento("comprobante").scrollIntoView({
-        behavior: "smooth"
-      });
-    });
-
-    tarjeta.appendChild(detalle);
-    tarjeta.appendChild(boton);
-    historial.appendChild(tarjeta);
-  });
-}
-
-elemento("generar")
-  .addEventListener("click", generarOrden);
-
-elemento("descargar")
-  .addEventListener("click", descargarPDF);
-
-elemento("compartir")
-  .addEventListener("click", compartirPDF);
-
-elemento("abrirWhatsapp")
-  .addEventListener("click", abrirWhatsapp);
-
-elemento("copiar")
-  .addEventListener("click", copiarOrden);
-
-mostrarHistorial();
-</script>
-</body>
+</div>  <div class="tarjeta" id="comprobante" hidden>  
+<h3>Orden generada</h3>  
+<div id="resultado"></div>  <button class="verde" id="descargar">  
+  Descargar PDF  
+</button>  <button id="compartir">  
+  Compartir PDF  
+</button>  <button class="gris" id="abrirWhatsapp">  
+  Enviar texto por WhatsApp  
+</button>  <button class="gris" id="copiar">  
+  Copiar texto  
+</button>  
+</div>  <div class="tarjeta">  
+<h3>Órdenes guardadas</h3>  
+<div id="historial"></div>  
+</div>  <p class="aviso">  
+CCWE · Los registros se guardan en este navegador.  
+Todavía no existe un sistema centralizado de validación.  
+</p>  <script>  
+"use strict";  
+  
+const CLAVE = "ordenesCombustible";  
+let ordenActual = null;  
+  
+function elemento(id) {  
+  return document.getElementById(id);  
+}  
+  
+function obtenerOrdenes() {  
+  try {  
+    const datos = JSON.parse(  
+      localStorage.getItem(CLAVE) || "[]"  
+    );  
+    return Array.isArray(datos) ? datos : [];  
+  } catch (e) {  
+    alert("No se pudo leer el historial.");  
+    return [];  
+  }  
+}  
+  
+function guardarOrdenes(ordenes) {  
+  try {  
+    localStorage.setItem(  
+      CLAVE,  
+      JSON.stringify(ordenes)  
+    );  
+    return true;  
+  } catch (e) {  
+    alert("No se pudo guardar la orden.");  
+    return false;  
+  }  
+}  
+  
+function textoOrden(o) {  
+  if (o.texto && !o.estacion) return o.texto;  
+  
+  return "ORDEN DE COMBUSTIBLE CCWE\n" +  
+    "N.º: " + o.numero + "\n" +  
+    "Fecha: " + o.fecha + "\n" +  
+    "Estación: " + o.estacion + "\n" +  
+    "Propietario del camión: " + (o.propietario || "-") + "\n" +  
+    "Chofer: " + o.chofer + "\n" +  
+    "Patente: " + o.patente + "\n" +  
+    "Combustible: " + o.combustible + "\n" +  
+    "Litros autorizados: " + o.litros;  
+}  
+  
+function generarOrden() {  
+  const estacion = elemento("estacion").value.trim();  
+  const propietario = elemento("propietario").value.trim();  
+  const chofer = elemento("chofer").value.trim();  
+  const patente = elemento("patente").value.trim().toUpperCase();  
+  const combustible = elemento("combustible").value;  
+  const litros = Number(elemento("litros").value);  
+  
+  if (!estacion || !propietario || !chofer ||  
+      !patente || !Number.isFinite(litros) ||  
+      litros <= 0) {  
+    alert("Completá correctamente todos los campos.");  
+    return;  
+  }  
+  
+  const orden = {  
+    numero: Date.now().toString(),  
+    fecha: new Date().toLocaleString("es-AR"),  
+    estacion,  
+    propietario,  
+    chofer,  
+    patente,  
+    combustible,  
+    litros  
+  };  
+  
+  orden.texto = textoOrden(orden);  
+  
+  const ordenes = obtenerOrdenes();  
+  ordenes.push(orden);  
+  
+  if (!guardarOrdenes(ordenes)) return;  
+  
+  mostrarComprobante(orden);  
+  mostrarHistorial();  
+  
+  alert("Orden generada y guardada.");  
+}  
+  
+function mostrarComprobante(o) {  
+  ordenActual = o;  
+  elemento("resultado").textContent = textoOrden(o);  
+  elemento("comprobante").hidden = false;  
+}  
+  
+function normalizarOrden(o) {  
+  if (o.estacion) return o;  
+  
+  const t = o.texto || "";  
+  
+  function extraer(nombre) {  
+    const linea = t.split("\n").find(  
+      x => x.startsWith(nombre + ":")  
+    );  
+    return linea ?  
+      linea.slice(nombre.length + 1).trim() : "";  
+  }  
+  
+  return {  
+    numero: o.numero || extraer("N.º"),  
+    fecha: o.fecha || extraer("Fecha"),  
+    estacion: extraer("Estación"),  
+    propietario: extraer("Propietario del camión"),  
+    chofer: o.chofer || extraer("Chofer"),  
+    patente: o.patente || extraer("Patente"),  
+    combustible: extraer("Combustible"),  
+    litros: extraer("Litros autorizados"),  
+    texto: t  
+  };  
+}  
+  
+function crearPDF(o) {  
+  if (!window.jspdf) {  
+    throw new Error(  
+      "No se cargó la biblioteca PDF. Comprobá tu conexión a Internet."  
+    );  
+  }  
+  
+  const { jsPDF } = window.jspdf;  
+  
+  const pdf = new jsPDF({  
+    orientation: "landscape",  
+    unit: "mm",  
+    format: "a5"  
+  });  
+  
+  const azul = [23, 59, 101];  
+  const gris = [75, 85, 99];  
+  
+  pdf.setDrawColor(...azul);  
+  pdf.setLineWidth(0.6);  
+  pdf.rect(8, 8, 194, 132);  
+  
+  // Logotipo CCWE  
+  pdf.setFillColor(...azul);  
+  pdf.roundedRect(15, 15, 39, 22, 2, 2, "F");  
+  
+  pdf.setFont("helvetica", "bold");  
+  pdf.setFontSize(19);  
+  pdf.setTextColor(255, 255, 255);  
+  pdf.text("CCWE", 34.5, 29, { align: "center" });  
+  
+  pdf.setTextColor(...azul);  
+  pdf.setFontSize(15);  
+  pdf.text("ORDEN DE CARGA", 61, 23);  
+  
+  pdf.setFontSize(9);  
+  pdf.setFont("helvetica", "normal");  
+  pdf.text("AUTORIZACIÓN DE COMBUSTIBLE", 61, 30);  
+  
+  pdf.setDrawColor(190, 198, 207);  
+  pdf.line(15, 43, 195, 43);  
+  
+  function campo(etiqueta, valor, x, y, ancho) {  
+    pdf.setFont("helvetica", "bold");  
+    pdf.setFontSize(8);  
+    pdf.setTextColor(...gris);  
+    pdf.text(etiqueta, x, y);  
+  
+    pdf.setFont("helvetica", "normal");  
+    pdf.setFontSize(10);  
+    pdf.setTextColor(25, 35, 50);  
+  
+    const lineas = pdf.splitTextToSize(  
+      String(valor || "-"), ancho  
+    );  
+  
+    pdf.text(lineas.slice(0, 2), x, y + 6);  
+  }  
+  
+  campo("NÚMERO DE ORDEN", o.numero, 15, 51, 90);  
+  campo("FECHA DE EMISIÓN", o.fecha, 115, 51, 80);  
+  
+  campo("ESTACIÓN DE SERVICIO", o.estacion, 15, 67, 85);  
+  campo("PROPIETARIO DEL CAMIÓN", o.propietario, 115, 67, 80);  
+  
+  campo("CHOFER AUTORIZADO", o.chofer, 15, 83, 85);  
+  campo("DOMINIO / PATENTE", o.patente, 115, 83, 80);  
+  
+  campo("TIPO DE COMBUSTIBLE", o.combustible, 15, 99, 85);  
+  
+  pdf.setFillColor(237, 242, 247);  
+  pdf.roundedRect(115, 95, 80, 23, 2, 2, "F");  
+  
+  pdf.setTextColor(...azul);  
+  pdf.setFont("helvetica", "bold");  
+  pdf.setFontSize(9);  
+  pdf.text("LITROS AUTORIZADOS", 120, 103);  
+  
+  pdf.setFontSize(16);  
+  pdf.text(String(o.litros) + " L", 120, 113);  
+  
+  pdf.setDrawColor(110, 120, 130);  
+  pdf.line(15, 121, 95, 121);  
+  
+  pdf.setFont("helvetica", "normal");  
+  pdf.setFontSize(8);  
+  pdf.setTextColor(...gris);  
+  pdf.text("Firma / conformidad", 55, 126, {  
+    align: "center"  
+  });  
+  
+  pdf.setDrawColor(190, 198, 207);  
+  pdf.line(15, 130, 195, 130);  
+  
+  pdf.setFontSize(7);  
+  pdf.text(  
+    "CCWE - Documento de autorización de carga",  
+    15, 135  
+  );  
+  
+  pdf.text(  
+    "Orden N.º " + o.numero,  
+    195, 135,  
+    { align: "right" }  
+  );  
+  
+  return pdf;  
+}  
+  
+function obtenerPDF() {  
+  if (!ordenActual) {  
+    alert("Primero generá o seleccioná una orden.");  
+    return null;  
+  }  
+  
+  try {  
+    return crearPDF(normalizarOrden(ordenActual));  
+  } catch (e) {  
+    alert(e.message);  
+    return null;  
+  }  
+}  
+  
+function descargarPDF() {  
+  const pdf = obtenerPDF();  
+  if (pdf) {  
+    pdf.save(  
+      "CCWE_Orden_" + ordenActual.numero + ".pdf"  
+    );  
+  }  
+}  
+  
+async function compartirPDF() {  
+  const pdf = obtenerPDF();  
+  if (!pdf) return;  
+  
+  const archivo = new File(  
+    [pdf.output("blob")],  
+    "CCWE_Orden_" + ordenActual.numero + ".pdf",  
+    { type: "application/pdf" }  
+  );  
+  
+  try {  
+    if (  
+      navigator.canShare &&  
+      navigator.canShare({ files: [archivo] }) &&  
+      navigator.share  
+    ) {  
+      await navigator.share({  
+        title: "Orden de combustible CCWE",  
+        files: [archivo]  
+      });  
+    } else {  
+      pdf.save(archivo.name);  
+      alert(  
+        "Se descargó el PDF. Podés enviarlo desde WhatsApp como documento."  
+      );  
+    }  
+  } catch (e) {  
+    if (e.name !== "AbortError") {  
+      alert(  
+        "No se pudo compartir. Probá descargar el PDF."  
+      );  
+    }  
+  }  
+}  
+  
+function abrirWhatsapp() {  
+  if (!ordenActual) {  
+    alert("Primero generá una orden.");  
+    return;  
+  }  
+  
+  const enlace =  
+    "https://api.whatsapp.com/send?text=" +  
+    encodeURIComponent(textoOrden(ordenActual));  
+  
+  window.location.href = enlace;  
+}  
+  
+async function copiarOrden() {  
+  if (!ordenActual) {  
+    alert("Primero generá una orden.");  
+    return;  
+  }  
+  
+  const texto = textoOrden(ordenActual);  
+  
+  try {  
+    await navigator.clipboard.writeText(texto);  
+    alert("Orden copiada.");  
+  } catch (e) {  
+    const campo = document.createElement("textarea");  
+    campo.value = texto;  
+    campo.style.position = "fixed";  
+    campo.style.opacity = "0";  
+  
+    document.body.appendChild(campo);  
+    campo.focus();  
+    campo.select();  
+  
+    const ok = document.execCommand("copy");  
+    campo.remove();  
+  
+    alert(  
+      ok ? "Orden copiada." : "No se pudo copiar."  
+    );  
+  }  
+}  
+  
+function mostrarHistorial() {  
+  const historial = elemento("historial");  
+  historial.replaceChildren();  
+  
+  const ordenes = obtenerOrdenes();  
+  
+  if (!ordenes.length) {  
+    historial.textContent =  
+      "Todavía no hay órdenes guardadas.";  
+    return;  
+  }  
+  
+  ordenes.slice().reverse().forEach(o => {  
+    const tarjeta = document.createElement("div");  
+    tarjeta.className = "tarjeta";  
+  
+    const detalle = document.createElement("div");  
+    detalle.className = "detalle";  
+  
+    detalle.textContent =  
+      "N.º " + o.numero + "\n" +  
+      o.fecha + "\n" +  
+      "Propietario: " + (o.propietario || "-") + "\n" +  
+      "Chofer: " + o.chofer + "\n" +  
+      "Patente: " + o.patente;  
+  
+    const boton = document.createElement("button");  
+    boton.className = "gris";  
+    boton.textContent = "Ver orden";  
+  
+    boton.addEventListener("click", () => {  
+      mostrarComprobante(o);  
+      elemento("comprobante").scrollIntoView({  
+        behavior: "smooth"  
+      });  
+    });  
+  
+    tarjeta.appendChild(detalle);  
+    tarjeta.appendChild(boton);  
+    historial.appendChild(tarjeta);  
+  });  
+}  
+  
+elemento("generar")  
+  .addEventListener("click", generarOrden);  
+  
+elemento("descargar")  
+  .addEventListener("click", descargarPDF);  
+  
+elemento("compartir")  
+  .addEventListener("click", compartirPDF);  
+  
+elemento("abrirWhatsapp")  
+  .addEventListener("click", abrirWhatsapp);  
+  
+elemento("copiar")  
+  .addEventListener("click", copiarOrden);  
+  
+mostrarHistorial();  
+</script>  </body>  
 </html>
