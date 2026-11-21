@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CCWE | Órdenes de combustible</title>
+<meta name="ccwe-version" content="23">
+<script>
+/* CCWE: comprobación de actualización al iniciar.
+   Incrementar ccwe-version en cada nueva publicación de index.html. */
+(function () {
+  "use strict";
+  const versionActual = document.querySelector('meta[name="ccwe-version"]').content;
+  const direccion = new URL('index.html', location.href);
+  // Consultamos siempre la dirección canónica, sin parámetros anteriores.
+  direccion.search = '';
+  direccion.hash = '';
+  const controlador = new AbortController();
+  const limite = setTimeout(() => controlador.abort(), 6000);
+  fetch(direccion.toString() + '?comprobar=' + Date.now(), {
+    cache: 'no-store',
+    signal: controlador.signal
+  }).then(async respuesta => {
+    if (!respuesta.ok) return;
+    const html = await respuesta.text();
+    const encontrada = html.match(/<meta\s+name=["']ccwe-version["']\s+content=["']([^"']+)["']/i);
+    if (!encontrada) return;
+    const versionRemota = encontrada[1];
+    if (versionRemota === versionActual) return;
+    // Evita un bucle si la publicación aún está propagándose.
+    if (new URL(location.href).searchParams.get('v') === versionRemota) return;
+    const nuevaDireccion = new URL(location.href);
+    nuevaDireccion.searchParams.set('v', versionRemota);
+    location.replace(nuevaDireccion.toString());
+  }).catch(() => {
+    // Sin conexión: permitir uso normal de la versión disponible.
+  }).finally(() => clearTimeout(limite));
+})();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{box-sizing:border-box}body{font-family:Arial,sans-serif;background:#f0f3f7;color:#243247;margin:0;padding:16px}h1{font-size:23px;color:#173b65;margin:0}h2{font-size:19px;color:#173b65}h3{margin-top:0}.encabezado{display:flex;align-items:center;gap:14px;margin:10px 0 22px}.logo{border:3px solid #173b65;color:#173b65;font-weight:900;font-size:21px;padding:12px 7px;letter-spacing:-1px}.subtitulo{font-size:12px;color:#526579;margin-top:5px}.tarjeta{background:white;padding:17px;border-radius:10px;margin:15px 0;box-shadow:0 1px 5px #0001}label{display:block;margin-top:15px;font-weight:bold}input,select,button{width:100%;padding:12px;margin-top:7px;border-radius:7px;font-size:16px}input,select{border:1px solid #b8c3cf;background:white}button{border:0;background:#1765ae;color:white;font-weight:bold;cursor:pointer}button:disabled{opacity:.55;cursor:wait}.verde{background:#16834a}.gris{background:#526579}.secundario{background:#e5edf5;color:#173b65}#resultado{white-space:pre-line;line-height:1.8;overflow-wrap:anywhere}.detalle{font-size:14px;white-space:pre-line;line-height:1.6}.aviso{font-size:12px;color:#526579;line-height:1.5}.estado{font-size:14px;line-height:1.5;color:#526579}.fila{display:flex;gap:8px;align-items:center}.fila>*{min-width:0}.fila select{flex:1}.fila button{width:auto;white-space:nowrap}[hidden]{display:none!important}
